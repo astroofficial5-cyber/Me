@@ -57,6 +57,9 @@ body{font:17px Amiri,"Noto Naskh Arabic",Tahoma,serif;color:var(--in);background
 #boot{position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--cr);text-align:center;background:var(--pat),#062a20;transition:opacity .6s;cursor:pointer}
 #boot big{font-size:64px;color:var(--gd)}
 #boot .bar{width:min(70vw,260px)}
+.en .wb,.en .menu button,.en .gb input,.en .gb textarea{direction:ltr;text-align:left}
+.en .err,.en .ic{text-align:center}
+.en .wb ul{padding:0}
 </style>
 </head>
 <body>
@@ -69,6 +72,7 @@ body{font:17px Amiri,"Noto Naskh Arabic",Tahoma,serif;color:var(--in);background
  <button class="ic" data-w="coffee"><b>☕</b>مشروع القهوة</button>
  <button class="ic" data-w="browser"><b>🌐</b>المتصفح</button>
  <button class="ic" data-w="guest"><b>📖</b>دفتر الزوار</button>
+ <button class="ic" data-w="nasheed"><b>🎧</b>أناشيد</button>
  <button class="ic" data-w="contact"><b>✉️</b>تواصل معي</button>
 </div>
 
@@ -100,7 +104,7 @@ body{font:17px Amiri,"Noto Naskh Arabic",Tahoma,serif;color:var(--in);background
   <p>القهوة شغفي، وبدأت أبني حاجة فيها. الكوباية عندي لازم تبقى حكاية مش مجرد مشروب.</p>
   <p>جاري التجهيز...</p>
   <div class="bar" role="progressbar" aria-label="جاري التجهيز"><i></i></div>
-  <a class="lnk" href="https://bit.ly/Bunelsheikh" target="_blank" rel="noopener">☕ افتح صفحة المشروع</a>
+  <a class="lnk" href="https://bunelsheikh.github.io/" target="_blank" rel="noopener">☕ افتح صفحة المشروع</a>
  </div>
 </div>
 
@@ -124,6 +128,10 @@ body{font:17px Amiri,"Noto Naskh Arabic",Tahoma,serif;color:var(--in);background
  </div>
 </div>
 
+<div class="win" id="nasheed" data-t="أناشيد بدون موسيقى">
+ <div class="wb" id="nb"><p>أناشيد بأصوات بس، من غير موسيقى.</p></div>
+</div>
+
 <div class="win" id="contact" data-t="تواصل معي">
  <div class="wb" id="links"></div>
 </div>
@@ -143,18 +151,38 @@ body{font:17px Amiri,"Noto Naskh Arabic",Tahoma,serif;color:var(--in);background
  <button data-w="coffee">☕ مشروع القهوة</button>
  <button data-w="browser">🌐 المتصفح</button>
  <button data-w="guest">📖 دفتر الزوار</button>
+ <button data-w="nasheed">🎧 أناشيد</button>
  <button data-w="contact">✉️ تواصل معي</button>
 </div>
 
 <div class="task">
  <button class="start" id="start">✦ ابدأ</button>
  <div class="tasks" id="tasks"></div>
+ <button class="tk" id="lg" style="flex:none;margin:4px 0" aria-label="Language">EN</button>
  <div class="clock" id="clock"></div>
 </div>
 
 <script>
 // عدّل بياناتك هنا. اللي تسيبه فاضي مش هيظهر.
 var ME={email:"",whatsapp:"201122352373",instagram:"theastro_1",linkedin:"",github:""};
+var NASHEED=""; // حط هنا رابط أو ID قائمة تشغيل يوتيوب للأناشيد
+var lang="ar";try{lang=localStorage.getItem("lang")==="en"?"en":"ar"}catch(e){}
+var EN={"كمبيوتر م حسن": "Eng. Hassan's Computer", "جاري تحميل العظمة...": "Loading greatness...", "اعتراف رسمي": "Official Confession", "الوظيفة": "Job Title", "مشروع القهوة": "Coffee Project", "المتصفح": "Browser", "دفتر الزوار": "Guestbook", "تواصل معي": "Contact Me", "أناشيد": "Nasheeds", "بسم الله": "In the name of God", "أنا السيد الموقر والعالم الجليل وسيد الناس وعم الدنيا وأبو الصحاب م حسن أقر وأعترف إني واخد فكرة الموقع ده من م عبود علشان أعرفه إنه وضيع لا يجرؤ على التطاول على أسياده من العباقرة اللي بيحطوا رجل على رجل ويعملوا نفس الشغل اللي أنت بتتني ضهرك وتسهر أيام علشان تعمله": "I, the Honorable, the Venerable, Master of the People, Uncle of the World and Father of All Friends, Eng. Hassan, hereby confess that I took the idea for this website from Eng. Boody, to let him know he is a lowly man who dares not challenge his masters: the geniuses who sit back, one leg over the other, and build the very same thing he hunches over and stays up for days to make.", "الوظيفة: سبع صنايع": "Job Title: Jack of All Trades", "طالب لغة عربية وآداب": "Arabic Literature student", "موظف سابق في أمازون": "Former Amazon employee", "موظف سابق في بريدفاست": "Former Breadfast employee", "صاحب مشروع قهوة تحت التجهيز": "Coffee entrepreneur (under construction)", "قارئ نهم وصاحب كلمة": "Avid reader and wordsmith", "مصمم ومبرمج الموقع اللي قدامك": "Designer and developer of the site in front of you", "مفتش عام على م عبود": "Inspector General of Boody", "القهوة شغفي، وبدأت أبني حاجة فيها. الكوباية عندي لازم تبقى حكاية مش مجرد مشروب.": "Coffee is my passion, and I've started building something in it. To me, a cup should be a story, not just a drink.", "جاري التجهيز...": "Setting up...", "افتح صفحة المشروع": "Open the project page", "مشروع القهوة - Setup": "Coffee Project - Setup", "اذهب": "Go", "اعتراف رسمي.txt": "Confession.txt", "المتصفح - م حسن Explorer": "Hassan Explorer", "وقّع": "Sign", "مسح الكل": "Clear all", "الرسائل بتتحفظ على جهازك إنت بس.": "Messages are saved on your device only.", "الرسائل بتظهر للكل.": "Messages are visible to everyone.", "لسه مفيش رسائل. كن أول المعجبين.": "No messages yet. Be the first fan.", "زائر كريم": "Dear visitor", "تعذّر تحميل الرسائل": "Couldn't load messages", "فشل المسح": "Delete failed", "فشل الإرسال": "Sending failed", "اسمك": "Your name", "اكتب رسالتك للعبقري": "Write a message to the genius", "مسح الرسالة": "Delete message", "العنوان": "Address", "جاري التجهيز": "Setting up", "تنبيه من النظام": "System Alert", "تم رصد مستوى إبداع مرتفع جدًا في هذا الموقع. هل تريد المتابعة؟": "Warning: extremely high creativity detected on this site. Continue?", "نعم": "Yes", "بكل تأكيد": "Absolutely", "م حسن إبراهيم": "Eng. Hassan Ibrahim", "ابدأ": "Start", "إيميل": "Email", "واتساب": "WhatsApp", "إنستجرام": "Instagram", "لينكدإن": "LinkedIn", "جيت هب": "GitHub", "وسائل التواصل هتتضاف قريب.": "Contact links coming soon.", "الصفحة دي مش موجودة. الأصل هنا في كمبيوتر م حسن.": "This page doesn't exist. The original is right here on Hassan's Computer.", "جاري تحميل الإبداع": "Loading creativity...", "المحاولة ٢٧٣ من ∞ ... لسه مفيش.": "Attempt 273 of ∞. Still nothing.", "تنبيه": "Notice", "الموقع ده اتصنّف: نسخة تجريبية.": "This site has been classified as a trial version.", "تم التحويل": "Redirected", "اتحوّلت لموقع م حسن تلقائيًا. اتفضل.": "Redirected to Hassan's site automatically. Please, come in.", "أناشيد بدون موسيقى": "Vocals-only Nasheeds", "أناشيد بأصوات بس، من غير موسيقى.": "Vocals-only nasheeds, no music.", "القائمة هتتضاف قريب.": "Playlist coming soon."};
+function tr(k){var t=k.trim();if(!t)return k;if(EN[t])return k.replace(t,EN[t]);var m=t.match(/^([^\s\u0600-\u06FFA-Za-z0-9]+)\s+(.+)$/);if(m&&EN[m[2]])return k.replace(t,m[1]+" "+EN[m[2]]);return k}
+function T(k){return lang==="en"?tr(k):k}
+function applyLang(){
+ var en=lang==="en",d=document;
+ d.documentElement.lang=lang;d.body.classList.toggle("en",en);
+ d.title=en?"Eng. Hassan's Computer":"كمبيوتر م حسن";
+ var w=d.createTreeWalker(d.body,NodeFilter.SHOW_TEXT),n,A=[];while(n=w.nextNode())A.push(n);
+ A.forEach(function(n){var e=n.parentNode;if(!e||/^(SCRIPT|STYLE)$/.test(e.tagName)||e.closest(".msg,.tb span,.tk,#lg"))return;
+  if(n.__o===undefined)n.__o=n.nodeValue;n.nodeValue=en?tr(n.__o):n.__o});
+ d.querySelectorAll("[placeholder],[aria-label],[data-t]").forEach(function(e){
+  ["placeholder","aria-label"].forEach(function(a){if(e.hasAttribute(a)){if(e["__"+a]===undefined)e["__"+a]=e.getAttribute(a);e.setAttribute(a,en?tr(e["__"+a]):e["__"+a])}});
+  if(e.dataset.t){if(!e.dataset.to)e.dataset.to=e.dataset.t;e.dataset.t=en?tr(e.dataset.to):e.dataset.to}});
+ d.querySelectorAll(".win").forEach(function(w){var sp=w.querySelector(".tb span");if(sp)sp.textContent=w.dataset.t;var t=document.querySelector('.tk[data-w="'+w.id+'"]');if(t)t.textContent=w.dataset.t});
+ var b=d.getElementById("lg");if(b)b.textContent=en?"عربي":"EN";
+ if(typeof tick==="function")tick()}
 
 var z=10,n=0,tasks=document.getElementById("tasks"),menu=document.getElementById("menu");
 function q(s,r){return (r||document).querySelector(s)}
@@ -192,6 +220,11 @@ function open(id){
  }
  front(w);menu.classList.remove("on");
 }
+var nbuilt=false;
+function buildN(){if(nbuilt)return;nbuilt=true;var m=String(NASHEED).match(/list=([\w-]+)/),id=m?m[1]:String(NASHEED).trim();
+ if(!id){var p=document.createElement("p");p.textContent="القائمة هتتضاف قريب.";$("nb").appendChild(p);applyLang();return}
+ var f=document.createElement("iframe");f.src="https://www.youtube-nocookie.com/embed/videoseries?list="+encodeURIComponent(id);f.title="Nasheeds";f.style.cssText="width:100%;height:240px;border:0";f.allow="encrypted-media";f.loading="lazy";$("nb").appendChild(f)}
+var _open=open;open=function(id){_open(id);if(id==="nasheed")buildN()};
 var coarse=matchMedia("(pointer:coarse)").matches;
 document.querySelectorAll(".ic").forEach(function(i){
  i.onclick=function(){document.querySelectorAll(".ic").forEach(function(o){o.classList.remove("sel")});i.classList.add("sel");if(coarse)open(i.dataset.w)};
@@ -203,7 +236,7 @@ document.getElementById("start").onclick=function(e){e.stopPropagation();menu.cl
 document.body.onclick=function(e){if(!e.target.closest(".ic"))document.querySelectorAll(".ic").forEach(function(o){o.classList.remove("sel")});if(!e.target.closest(".menu"))menu.classList.remove("on")};
 
 var M=[["🚫","ERR_ORIGINALITY_NOT_FOUND","الصفحة دي مش موجودة. الأصل هنا في كمبيوتر م حسن."],["⏳","جاري تحميل الإبداع","المحاولة ٢٧٣ من ∞ ... لسه مفيش."],["📉","تنبيه","الموقع ده اتصنّف: نسخة تجريبية."],["👑","تم التحويل","اتحوّلت لموقع م حسن تلقائيًا. اتفضل."]],mi=0,pg=document.getElementById("page");
-function showErr(){var m=M[mi%M.length];mi++;pg.innerHTML="<b></b><h3></h3><p></p>";pg.firstChild.textContent=m[0];pg.children[1].textContent=m[1];pg.children[2].textContent=m[2]}
+function showErr(){var m=M[mi%M.length];mi++;pg.innerHTML="<b></b><h3></h3><p></p>";pg.firstChild.textContent=m[0];pg.children[1].textContent=m[1];pg.children[2].textContent=m[2];applyLang()}
 showErr();mi=1;document.getElementById("go").onclick=showErr;
 
 var SB={url:"https://xorjxiaeqpriysrhzyal.supabase.co",key:"sb_publishable_ZTS3DdH23ijTpBRs-ER1wg_0WxCsuKb"}; // حط هنا رابط مشروع Supabase والـ anon key
@@ -211,15 +244,15 @@ var TOK=null,G=[],gl=document.getElementById("gl"),remote=!!(SB.url&&SB.key),las
 function $(i){return document.getElementById(i)}
 function api(p,o){o=o||{};o.headers=Object.assign({apikey:SB.key,Authorization:"Bearer "+(TOK||SB.key),"Content-Type":"application/json"},o.headers||{});return fetch(SB.url+p,o)}
 function saveG(){try{localStorage.setItem("gb",JSON.stringify(G))}catch(e){}}
-function note(t){$("gt").textContent=t}
+function note(t){$("gt").textContent=t;applyLang()}
 function drawG(){
  gl.textContent="";
  $("gc").style.display=(!remote||TOK)?"":"none";
- if(!G.length){gl.textContent="لسه مفيش رسائل. كن أول المعجبين.";return}
+ if(!G.length){gl.textContent="لسه مفيش رسائل. كن أول المعجبين.";applyLang();return}
  G.forEach(function(g){
   var d=document.createElement("div");d.className="msg";
   if(!remote||TOK){var x=document.createElement("button");x.className="btn";x.style.cssText="float:left;padding:0 8px";x.textContent="✕";x.setAttribute("aria-label","مسح الرسالة");x.onclick=function(){del(g)};d.appendChild(x)}
-  var s=document.createElement("b");s.textContent=g[0];var p=document.createElement("div");p.textContent=g[1];d.append(s,p);gl.appendChild(d)})}
+  var s=document.createElement("b");s.textContent=g[0];var p=document.createElement("div");p.textContent=g[1];d.append(s,p);gl.appendChild(d)});applyLang()}
 function load(){
  if(!remote){try{G=JSON.parse(localStorage.getItem("gb")||"[]")}catch(e){}drawG();return}
  api("/rest/v1/guestbook?select=id,name,message&order=created_at.desc&limit=50").then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(rows){G=rows.map(function(r){return [r.name,r.message,r.id]});drawG()}).catch(function(){note("تعذّر تحميل الرسائل")})}
@@ -230,7 +263,7 @@ $("gc").onclick=function(){
  if(remote){api("/rest/v1/guestbook?id=gt.0",{method:"DELETE"}).then(load).catch(function(){note("فشل المسح")})}
  else{G=[];saveG();drawG()}};
 $("gs").onclick=function(){
- var a=$("gn").value.trim()||"زائر كريم",m=$("gm").value.trim();
+ var a=$("gn").value.trim()||T("زائر كريم"),m=$("gm").value.trim();
  if(!m||Date.now()-last<20000)return;
  last=Date.now();
  if(remote){api("/rest/v1/guestbook",{method:"POST",headers:{Prefer:"return=minimal"},body:JSON.stringify({name:a,message:m})}).then(function(r){if(!r.ok)throw 0;$("gm").value="";load()}).catch(function(){note("فشل الإرسال")})}
@@ -247,9 +280,11 @@ var box=document.getElementById("links"),any=false;
 L.forEach(function(x){if(ME[x[0]]){any=true;var a=document.createElement("a");a.className="lnk";a.href=x[2]+ME[x[0]];a.target="_blank";a.rel="noopener";a.textContent=x[1];box.appendChild(a)}});
 if(!any)box.textContent="وسائل التواصل هتتضاف قريب.";
 
-function tick(){document.getElementById("clock").textContent=new Date().toLocaleTimeString("ar-EG",{hour:"numeric",minute:"2-digit"})}
+function tick(){document.getElementById("clock").textContent=new Date().toLocaleTimeString(lang==="en"?"en-US":"ar-EG",{hour:"numeric",minute:"2-digit"})}
 tick();setInterval(tick,20000);
 
+$("lg").onclick=function(){lang=lang==="en"?"ar":"en";try{localStorage.setItem("lang",lang)}catch(e){}applyLang()};
+applyLang();
 var boot=document.getElementById("boot"),done=false;
 function go(){if(done)return;done=true;boot.style.opacity=0;setTimeout(function(){boot.remove();open("about");setTimeout(function(){open("alert")},700)},matchMedia("(prefers-reduced-motion:reduce)").matches?0:600)}
 boot.onclick=go;setTimeout(go,2200);
