@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>كمبيوتر م حسن</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Amiri:wght@400;700&display=swap">
+<style>
+:root{box-sizing:border-box;--em:#0b3d2e;--tl:#0f766e;--gd:#c9a227;--cr:#f6edd2;--in:#10261d;
+ --pat:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cg fill='none' stroke='%23c9a227' stroke-opacity='.28' stroke-width='1.5'%3E%3Crect x='20' y='20' width='40' height='40'/%3E%3Crect x='20' y='20' width='40' height='40' transform='rotate(45 40 40)'/%3E%3Ccircle cx='40' cy='40' r='11'/%3E%3C/g%3E%3C/svg%3E")}
+*,*::before,*::after{box-sizing:inherit}
+html,body{height:100%;margin:0;overflow:hidden}
+body{font:17px Amiri,"Noto Naskh Arabic",Tahoma,serif;color:var(--in);background:var(--pat),radial-gradient(ellipse at 50% 30%,#14634c,#0b3d2e 60%,#062a20)}
+.k{font-family:"Reem Kufi",Tahoma,sans-serif}
+.icons{position:absolute;inset:calc(10px + env(safe-area-inset-top,0px)) 8px 52px auto;display:flex;flex-direction:column;flex-wrap:wrap;gap:6px;align-content:flex-start}
+.ic{width:88px;padding:6px 2px;text-align:center;color:var(--cr);text-shadow:1px 1px 3px #000;background:none;border:1px solid transparent;font:14px "Reem Kufi",Tahoma,sans-serif;cursor:pointer;border-radius:4px}
+.ic b{display:block;font-size:32px;line-height:1.3;filter:drop-shadow(1px 2px 2px rgba(0,0,0,.6))}
+.ic:focus-visible,.ic.sel{background:rgba(201,162,39,.3);border-color:var(--gd);outline:0}
+.win{position:absolute;display:none;width:min(92vw,460px);background:var(--gd);border-radius:14px 14px 0 0;padding:0 3px 3px;box-shadow:3px 5px 16px rgba(0,0,0,.6)}
+.win.on{display:block}
+.tb{display:flex;align-items:center;gap:6px;padding:6px 8px;margin:0 -3px;color:var(--cr);font:700 14px "Reem Kufi",Tahoma,sans-serif;cursor:move;touch-action:none;user-select:none;
+ background:linear-gradient(#1f8a6a,#0f5a45 18%,#0b3d2e);border-radius:14px 14px 0 0;border-bottom:2px solid var(--gd)}
+.tb span{flex:1}
+.tbtn{width:22px;height:22px;padding:0;border:1px solid var(--gd);border-radius:50%;color:var(--cr);font:700 12px Tahoma;cursor:pointer;background:#0f5a45}
+.tbtn.x{background:#a13a22}
+.wb{background:var(--cr) var(--pat);padding:14px;max-height:min(62vh,440px);overflow:auto;line-height:1.9}
+.wb h3{margin:0 0 6px;font:700 19px "Reem Kufi",Tahoma,sans-serif;color:var(--em)}
+.wb p{margin:0 0 10px}
+.wb ul{margin:0;padding:0;list-style:none}
+.wb li{padding:4px 0;border-bottom:1px dashed #b9a45a}
+.wb li::before{content:"✦ ";color:var(--gd)}
+.conf{border:2px solid var(--gd);outline:2px solid var(--em);outline-offset:3px;border-radius:6px;padding:14px;background:rgba(255,255,255,.55);font-size:19px;text-align:justify}
+.bar{height:20px;border:2px inset #8a6d12;background:#fff;padding:2px;margin:8px 0}
+.bar i{display:block;height:100%;width:62%;background:repeating-linear-gradient(90deg,var(--tl) 0 10px,#fff 10px 13px);animation:ld 3s steps(12) infinite alternate}
+@keyframes ld{from{width:20%}to{width:90%}}
+@media (prefers-reduced-motion:reduce){.bar i{animation:none}#boot{transition:none}}
+.lnk{display:block;padding:8px 10px;margin-bottom:6px;border:1px solid var(--em);border-radius:4px;color:var(--em);text-decoration:none;background:#fffbe9}
+.lnk:hover,.lnk:focus-visible{background:#e9dca0}
+.br{display:flex;gap:6px;margin-bottom:8px}
+.br input,.gb input,.gb textarea{flex:1;min-width:0;padding:6px;border:1px solid var(--em);border-radius:4px;background:#fff;font:inherit}
+.btn{padding:5px 14px;border:1px solid var(--em);border-radius:5px;background:linear-gradient(#fff,#e4d9a8);font:15px "Reem Kufi",Tahoma,sans-serif;color:var(--in);cursor:pointer}
+.err{text-align:center;padding:14px;border:1px solid #888;background:#fff}
+.err b{font-size:40px;display:block}
+.gb{display:grid;gap:6px;margin-bottom:10px}
+.msg{padding:6px 8px;margin-bottom:6px;background:#fffbe9;border-right:4px solid var(--gd)}
+.task{position:fixed;inset:auto 0 0 0;height:calc(40px + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px);display:flex;gap:4px;z-index:9999;background:linear-gradient(#14634c,#0b3d2e);border-top:2px solid var(--gd)}
+.start{border:0;padding:0 22px;color:var(--in);font:700 18px "Reem Kufi",Tahoma,sans-serif;cursor:pointer;background:linear-gradient(#e6c65a,var(--gd));border-radius:0 18px 18px 0}
+.tasks{flex:1;display:flex;gap:4px;padding:4px 0;overflow:hidden}
+.tk{max-width:150px;padding:0 10px;border:1px solid var(--gd);border-radius:4px;color:var(--cr);font:13px "Reem Kufi",Tahoma,sans-serif;cursor:pointer;background:#14634c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tk.act{background:#062a20;box-shadow:inset 1px 1px 3px #000}
+.clock{display:flex;align-items:center;padding:0 14px;color:var(--cr);font:13px "Reem Kufi",Tahoma,sans-serif;background:var(--tl);border-right:1px solid var(--gd)}
+.menu{position:fixed;right:0;bottom:calc(40px + env(safe-area-inset-bottom,0px));width:min(86vw,280px);display:none;z-index:9998;background:var(--cr);border:2px solid var(--gd);border-radius:12px 12px 0 0;overflow:hidden}
+.menu.on{display:block}
+.menu h4{margin:0;padding:12px;color:var(--cr);font:700 17px "Reem Kufi",Tahoma,sans-serif;background:linear-gradient(#1f8a6a,var(--em))}
+.menu button{display:block;width:100%;padding:10px 14px;border:0;background:none;text-align:right;font:inherit;cursor:pointer;color:var(--in)}
+.menu button:hover,.menu button:focus-visible{background:var(--em);color:var(--cr)}
+#boot{position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--cr);text-align:center;background:var(--pat),#062a20;transition:opacity .6s;cursor:pointer}
+#boot big{font-size:64px;color:var(--gd)}
+#boot .bar{width:min(70vw,260px)}
+</style>
+</head>
+<body>
+
+<div id="boot"><big>✦</big><div class="k" style="font-size:26px">كمبيوتر م حسن</div><div>جاري تحميل العظمة...</div><div class="bar"><i></i></div></div>
+
+<div class="icons">
+ <button class="ic" data-w="about"><b>📜</b>اعتراف رسمي</button>
+ <button class="ic" data-w="work"><b>🛠️</b>الوظيفة</button>
+ <button class="ic" data-w="coffee"><b>☕</b>مشروع القهوة</button>
+ <button class="ic" data-w="browser"><b>🌐</b>المتصفح</button>
+ <button class="ic" data-w="guest"><b>📖</b>دفتر الزوار</button>
+ <button class="ic" data-w="contact"><b>✉️</b>تواصل معي</button>
+</div>
+
+<div class="win" id="about" data-t="اعتراف رسمي.txt">
+ <div class="wb">
+  <h3>بسم الله</h3>
+  <div class="conf">أنا السيد الموقر والعالم الجليل وسيد الناس وعم الدنيا وأبو الصحاب م حسن أقر وأعترف إني واخد فكرة الموقع ده من م عبود علشان أعرفه إنه وضيع لا يجرؤ على التطاول على أسياده من العباقرة اللي بيحطوا رجل على رجل ويعملوا نفس الشغل اللي أنت بتتني ضهرك وتسهر أيام علشان تعمله</div>
+ </div>
+</div>
+
+<div class="win" id="work" data-t="الوظيفة: سبع صنايع">
+ <div class="wb">
+  <h3>الوظيفة: سبع صنايع</h3>
+  <ul>
+   <li>طالب لغة عربية وآداب</li>
+   <li>موظف سابق في أمازون</li>
+   <li>موظف سابق في بريدفاست</li>
+   <li>صاحب مشروع قهوة تحت التجهيز</li>
+   <li>قارئ نهم وصاحب كلمة</li>
+   <li>مصمم ومبرمج الموقع اللي قدامك</li>
+   <li>مفتش عام على م عبود</li>
+  </ul>
+ </div>
+</div>
+
+<div class="win" id="coffee" data-t="مشروع القهوة - Setup">
+ <div class="wb">
+  <h3>☕ مشروع القهوة</h3>
+  <p>القهوة شغفي، وبدأت أبني حاجة فيها. الكوباية عندي لازم تبقى حكاية مش مجرد مشروب.</p>
+  <p>جاري التجهيز...</p>
+  <div class="bar" role="progressbar" aria-label="جاري التجهيز"><i></i></div>
+  <a class="lnk" href="https://bit.ly/Bunelsheikh" target="_blank" rel="noopener">☕ افتح صفحة المشروع</a>
+ </div>
+</div>
+
+<div class="win" id="browser" data-t="المتصفح - م حسن Explorer">
+ <div class="wb">
+  <div class="br"><input readonly value="https://bitboody.github.io" aria-label="العنوان"><button class="btn" id="go">اذهب</button></div>
+  <div class="err" id="page"></div>
+ </div>
+</div>
+
+<div class="win" id="guest" data-t="دفتر الزوار">
+ <div class="wb">
+  <div class="gb">
+   <input id="gn" maxlength="20" placeholder="اسمك">
+   <textarea id="gm" maxlength="140" rows="2" placeholder="اكتب رسالتك للعبقري"></textarea>
+   <button class="btn" id="gs">وقّع</button>
+  </div>
+  <div id="gl"></div>
+  <button class="btn" id="gc">مسح الكل</button> <button class="btn" id="gk" style="display:none" aria-label="دخول الأدمن">🔒</button> <small id="gt">الرسائل بتتحفظ على جهازك إنت بس.</small>
+  <div class="gb" id="adm" style="display:none;margin-top:8px"><input id="ge" type="email" placeholder="إيميل الأدمن"><input id="gp" type="password" placeholder="الباسورد"><button class="btn" id="gi">دخول</button></div>
+ </div>
+</div>
+
+<div class="win" id="contact" data-t="تواصل معي">
+ <div class="wb" id="links"></div>
+</div>
+
+<div class="win" id="alert" data-t="تنبيه من النظام" data-c="1" style="width:min(88vw,340px)">
+ <div class="wb" style="text-align:center">
+  <p style="font-size:36px;margin:0">⚠️</p>
+  <p>تم رصد مستوى إبداع مرتفع جدًا في هذا الموقع. هل تريد المتابعة؟</p>
+  <button class="btn" data-x="alert">نعم</button> <button class="btn" data-x="alert">بكل تأكيد</button>
+ </div>
+</div>
+
+<div class="menu" id="menu">
+ <h4>م حسن إبراهيم</h4>
+ <button data-w="about">📜 اعتراف رسمي</button>
+ <button data-w="work">🛠️ الوظيفة</button>
+ <button data-w="coffee">☕ مشروع القهوة</button>
+ <button data-w="browser">🌐 المتصفح</button>
+ <button data-w="guest">📖 دفتر الزوار</button>
+ <button data-w="contact">✉️ تواصل معي</button>
+</div>
+
+<div class="task">
+ <button class="start" id="start">✦ ابدأ</button>
+ <div class="tasks" id="tasks"></div>
+ <div class="clock" id="clock"></div>
+</div>
+
+<script>
+// عدّل بياناتك هنا. اللي تسيبه فاضي مش هيظهر.
+var ME={email:"",whatsapp:"201122352373",instagram:"theastro_1",linkedin:"",github:""};
+
+var z=10,n=0,tasks=document.getElementById("tasks"),menu=document.getElementById("menu");
+function q(s,r){return (r||document).querySelector(s)}
+function front(w){z++;w.style.zIndex=z;document.querySelectorAll(".tk").forEach(function(t){t.classList.toggle("act",t.dataset.w===w.id)})}
+function shut(id,drop){var w=document.getElementById(id);w.classList.remove("on");var t=q('.tk[data-w="'+id+'"]');if(t){if(drop)t.remove();else t.classList.remove("act")}}
+function open(id){
+ var w=document.getElementById(id);
+ if(!w.dataset.init){
+  w.dataset.init=1;
+  var tb=document.createElement("div");tb.className="tb";
+  tb.innerHTML='<span></span><button class="tbtn" aria-label="تصغير">_</button><button class="tbtn x" aria-label="إغلاق">✕</button>';
+  q("span",tb).textContent=w.dataset.t;
+  w.insertBefore(tb,w.firstChild);
+  var b=tb.querySelectorAll("button");
+  b[0].onclick=function(){shut(id)};
+  b[1].onclick=function(){shut(id,1)};
+  w.classList.add("on");
+  w.style.left=w.dataset.c?Math.max(6,(innerWidth-w.offsetWidth)/2)+"px":Math.max(6,Math.min(innerWidth-w.offsetWidth-6,30+n*26))+"px";
+  w.style.top=(w.dataset.c?120:24+n*26)+"px";if(!w.dataset.c)n=(n+1)%6;
+  w.onpointerdown=function(){front(w)};
+  tb.onpointerdown=function(e){
+   if(e.target.closest("button"))return;
+   var r=w.getBoundingClientRect(),dx=e.clientX-r.left,dy=e.clientY-r.top;
+   tb.setPointerCapture(e.pointerId);
+   tb.onpointermove=function(m){
+    w.style.left=Math.max(0,Math.min(innerWidth-60,m.clientX-dx))+"px";
+    w.style.top=Math.max(0,Math.min(innerHeight-90,m.clientY-dy))+"px"};
+   tb.onpointerup=function(){tb.onpointermove=null}};
+ }
+ w.classList.add("on");
+ if(!q('.tk[data-w="'+id+'"]')){
+  var t=document.createElement("button");t.className="tk";t.dataset.w=id;t.textContent=w.dataset.t;
+  t.onclick=function(){if(w.classList.contains("on")&&t.classList.contains("act")){shut(id)}else{w.classList.add("on");front(w)}};
+  tasks.appendChild(t);
+ }
+ front(w);menu.classList.remove("on");
+}
+var coarse=matchMedia("(pointer:coarse)").matches;
+document.querySelectorAll(".ic").forEach(function(i){
+ i.onclick=function(){document.querySelectorAll(".ic").forEach(function(o){o.classList.remove("sel")});i.classList.add("sel");if(coarse)open(i.dataset.w)};
+ i.ondblclick=function(){open(i.dataset.w)};
+});
+menu.querySelectorAll("button").forEach(function(b){b.onclick=function(){open(b.dataset.w)}});
+document.querySelectorAll("[data-x]").forEach(function(b){b.onclick=function(){shut(b.dataset.x,1)}});
+document.getElementById("start").onclick=function(e){e.stopPropagation();menu.classList.toggle("on")};
+document.body.onclick=function(e){if(!e.target.closest(".ic"))document.querySelectorAll(".ic").forEach(function(o){o.classList.remove("sel")});if(!e.target.closest(".menu"))menu.classList.remove("on")};
+
+var M=[["🚫","ERR_ORIGINALITY_NOT_FOUND","الصفحة دي مش موجودة. الأصل هنا في كمبيوتر م حسن."],["⏳","جاري تحميل الإبداع","المحاولة ٢٧٣ من ∞ ... لسه مفيش."],["📉","تنبيه","الموقع ده اتصنّف: نسخة تجريبية."],["👑","تم التحويل","اتحوّلت لموقع م حسن تلقائيًا. اتفضل."]],mi=0,pg=document.getElementById("page");
+function showErr(){var m=M[mi%M.length];mi++;pg.innerHTML="<b></b><h3></h3><p></p>";pg.firstChild.textContent=m[0];pg.children[1].textContent=m[1];pg.children[2].textContent=m[2]}
+showErr();mi=1;document.getElementById("go").onclick=showErr;
+
+var SB={url:"https://xorjxiaeqpriysrhzyal.supabase.co",key:"sb_publishable_ZTS3DdH23ijTpBRs-ER1wg_0WxCsuKb"}; // حط هنا رابط مشروع Supabase والـ anon key
+var TOK=null,G=[],gl=document.getElementById("gl"),remote=!!(SB.url&&SB.key),last=0;
+function $(i){return document.getElementById(i)}
+function api(p,o){o=o||{};o.headers=Object.assign({apikey:SB.key,Authorization:"Bearer "+(TOK||SB.key),"Content-Type":"application/json"},o.headers||{});return fetch(SB.url+p,o)}
+function saveG(){try{localStorage.setItem("gb",JSON.stringify(G))}catch(e){}}
+function note(t){$("gt").textContent=t}
+function drawG(){
+ gl.textContent="";
+ $("gc").style.display=(!remote||TOK)?"":"none";
+ if(!G.length){gl.textContent="لسه مفيش رسائل. كن أول المعجبين.";return}
+ G.forEach(function(g){
+  var d=document.createElement("div");d.className="msg";
+  if(!remote||TOK){var x=document.createElement("button");x.className="btn";x.style.cssText="float:left;padding:0 8px";x.textContent="✕";x.setAttribute("aria-label","مسح الرسالة");x.onclick=function(){del(g)};d.appendChild(x)}
+  var s=document.createElement("b");s.textContent=g[0];var p=document.createElement("div");p.textContent=g[1];d.append(s,p);gl.appendChild(d)})}
+function load(){
+ if(!remote){try{G=JSON.parse(localStorage.getItem("gb")||"[]")}catch(e){}drawG();return}
+ api("/rest/v1/guestbook?select=id,name,message&order=created_at.desc&limit=50").then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(rows){G=rows.map(function(r){return [r.name,r.message,r.id]});drawG()}).catch(function(){note("تعذّر تحميل الرسائل")})}
+function del(g){
+ if(remote){api("/rest/v1/guestbook?id=eq."+g[2],{method:"DELETE"}).then(load).catch(function(){note("فشل المسح")})}
+ else{G.splice(G.indexOf(g),1);saveG();drawG()}}
+$("gc").onclick=function(){
+ if(remote){api("/rest/v1/guestbook?id=gt.0",{method:"DELETE"}).then(load).catch(function(){note("فشل المسح")})}
+ else{G=[];saveG();drawG()}};
+$("gs").onclick=function(){
+ var a=$("gn").value.trim()||"زائر كريم",m=$("gm").value.trim();
+ if(!m||Date.now()-last<20000)return;
+ last=Date.now();
+ if(remote){api("/rest/v1/guestbook",{method:"POST",headers:{Prefer:"return=minimal"},body:JSON.stringify({name:a,message:m})}).then(function(r){if(!r.ok)throw 0;$("gm").value="";load()}).catch(function(){note("فشل الإرسال")})}
+ else{G.unshift([a,m]);G=G.slice(0,30);saveG();$("gm").value="";drawG()}};
+if(remote){
+ note("الرسائل بتظهر للكل.");
+ $("gk").onclick=function(){var a=$("adm");a.style.display=a.style.display==="none"?"grid":"none"};
+ $("gi").onclick=function(){
+  api("/auth/v1/token?grant_type=password",{method:"POST",body:JSON.stringify({email:$("ge").value.trim(),password:$("gp").value})}).then(function(r){return r.json()}).then(function(j){if(!j.access_token)throw 0;TOK=j.access_token;$("gp").value="";$("adm").style.display="none";note("دخلت كأدمن.");load()}).catch(function(){note("بيانات الدخول غلط.")})}}
+load();
+
+var L=[["email","✉️ إيميل","mailto:"],["whatsapp","💬 واتساب","https://wa.me/"],["instagram","📷 إنستجرام","https://instagram.com/"],["linkedin","💼 لينكدإن","https://linkedin.com/in/"],["github","🐙 جيت هب","https://github.com/"]];
+var box=document.getElementById("links"),any=false;
+L.forEach(function(x){if(ME[x[0]]){any=true;var a=document.createElement("a");a.className="lnk";a.href=x[2]+ME[x[0]];a.target="_blank";a.rel="noopener";a.textContent=x[1];box.appendChild(a)}});
+if(!any)box.textContent="وسائل التواصل هتتضاف قريب.";
+
+function tick(){document.getElementById("clock").textContent=new Date().toLocaleTimeString("ar-EG",{hour:"numeric",minute:"2-digit"})}
+tick();setInterval(tick,20000);
+
+var boot=document.getElementById("boot"),done=false;
+function go(){if(done)return;done=true;boot.style.opacity=0;setTimeout(function(){boot.remove();open("about");setTimeout(function(){open("alert")},700)},matchMedia("(prefers-reduced-motion:reduce)").matches?0:600)}
+boot.onclick=go;setTimeout(go,2200);
+</script>
+</body>
+</html>
