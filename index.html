@@ -1,9 +1,8 @@
-
 <!doctype html>
 <!--
   أهلًا يا م عبود 👋
   لو وصلت هنا يبقى فتحت الكود تدوّر على غلطة.
-  دوّرت كويس؟ ملقيتش، صح؟
+  دوّرت كويس؟ ملقيتش، صح؟ 😌
   اقفل الصفحة واشتغل على موقعك.
   — م حسن، سيد الناس وعم الدنيا
 -->
@@ -11,6 +10,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data:; connect-src https://xorjxiaeqpriysrhzyal.supabase.co; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>كمبيوتر م حسن</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Amiri:wght@400;700&display=swap">
@@ -177,6 +177,7 @@ body{font:17px Amiri,"Noto Naskh Arabic",Tahoma,serif;color:var(--in);background
  <div class="wb">
   <div class="gb">
    <input id="gn" maxlength="20" placeholder="اسمك">
+   <input id="gh" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
    <textarea id="gm" maxlength="140" rows="2" placeholder="اكتب رسالتك للعبقري"></textarea>
    <button class="btn" id="gs">وقّع</button>
   </div>
@@ -204,7 +205,7 @@ body{font:17px Amiri,"Noto Naskh Arabic",Tahoma,serif;color:var(--in);background
  <div class="wb">
   <div id="ptabs"></div>
   <div id="pj"></div>
-  <small>بعض أعمالي.</small>
+  <small>كل المشاريع دي من وحي الخيال.</small>
  </div>
 </div>
 
@@ -245,7 +246,7 @@ console.log("%cأهلًا يا م عبود! لسه بتدوّر؟ الغلطة �
 // عدّل بياناتك هنا. اللي تسيبه فاضي مش هيظهر.
 var ME={email:"",whatsapp:"201122352373",instagram:"theastro_1",linkedin:"",github:""};
 var lang="ar";try{lang=localStorage.getItem("lang")==="en"?"en":"ar"}catch(e){}
-var EN={"مشاريعي":"My Projects","حسن حاسس بـ:":"Hassan is feeling:","آخر حاجة اشتغلت عليها:":"Last worked on:","كل المشاريع دي من وحي الخيال.":"All these projects are fictional.","قهوة":"coffee","عبقري":"a genius","بشتغل على مشروع":"working on a project","محتاج قهوة":"needs coffee","عبود AI - Messenger":"Boody AI - Messenger","عبود AI":"Boody AI","عبود AI ✨":"Boody AI ✨","متصل":"Online","اكتب سؤالك لعبود...":"Ask Boody anything...","إرسال":"Send","تعذّر تشغيل المقطع هنا.":"Couldn't play the clip here.","افتح على يوتيوب":"Open on YouTube","افتح الموقع من رابط GitHub Pages مش من الملف.":"Open the site from its GitHub Pages link, not from the file.","تشغيل":"Play","السابق":"Previous","التالي":"Next","الموضع":"Position","مستوى الصوت":"Volume","تعذّر تحميل المشغّل.":"Couldn't load the player.","كمبيوتر م حسن": "Eng. Hassan's Computer", "جاري تحميل العظمة...": "Loading greatness...", "اعتراف رسمي": "Official Confession", "الوظيفة": "Job Title", "مشروع القهوة": "Coffee Project", "المتصفح": "Browser", "دفتر الزوار": "Guestbook", "تواصل معي": "Contact Me", "أناشيد": "Nasheeds", "بسم الله": "In the name of God", "أنا السيد الموقر والعالم الجليل وسيد الناس وعم الدنيا وأبو الصحاب م حسن أقر وأعترف إني واخد فكرة الموقع ده من م عبود علشان أعرفه إنه وضيع لا يجرؤ على التطاول على أسياده من العباقرة اللي بيحطوا رجل على رجل ويعملوا نفس الشغل اللي أنت بتتني ضهرك وتسهر أيام علشان تعمله": "I, the Honorable, the Venerable, Master of the People, Uncle of the World and Father of All Friends, Eng. Hassan, hereby confess that I took the idea for this website from Eng. Boody, to let him know he is a lowly man who dares not challenge his masters: the geniuses who sit back, one leg over the other, and build the very same thing he hunches over and stays up for days to make.", "الوظيفة: سبع صنايع": "Job Title: Jack of All Trades", "طالب لغة عربية وآداب": "Arabic Literature student", "موظف سابق في أمازون": "Former Amazon employee", "موظف سابق في بريدفاست": "Former Breadfast employee", "صاحب مشروع قهوة تحت التجهيز": "Coffee entrepreneur (under construction)", "قارئ نهم وصاحب كلمة": "Avid reader and wordsmith", "مصمم ومبرمج الموقع اللي قدامك": "Designer and developer of the site in front of you", "مفتش عام على م عبود": "Inspector General of Boody", "القهوة شغفي، وبدأت أبني حاجة فيها. الكوباية عندي لازم تبقى حكاية مش مجرد مشروب.": "Coffee is my passion, and I've started building something in it. To me, a cup should be a story, not just a drink.", "جاري التجهيز...": "Setting up...", "افتح صفحة المشروع": "Open the project page", "مشروع القهوة - Setup": "Coffee Project - Setup", "اذهب": "Go", "اعتراف رسمي.txt": "Confession.txt", "المتصفح - م حسن Explorer": "Hassan Explorer", "وقّع": "Sign", "مسح الكل": "Clear all", "الرسائل بتتحفظ على جهازك إنت بس.": "Messages are saved on your device only.", "الرسائل بتظهر للكل.": "Messages are visible to everyone.", "لسه مفيش رسائل. كن أول المعجبين.": "No messages yet. Be the first fan.", "زائر كريم": "Dear visitor", "تعذّر تحميل الرسائل": "Couldn't load messages", "فشل المسح": "Delete failed", "فشل الإرسال": "Sending failed", "اسمك": "Your name", "اكتب رسالتك للعبقري": "Write a message to the genius", "مسح الرسالة": "Delete message", "العنوان": "Address", "جاري التجهيز": "Setting up", "تنبيه من النظام": "System Alert", "تم رصد مستوى إبداع مرتفع جدًا في هذا الموقع. هل تريد المتابعة؟": "Warning: extremely high creativity detected on this site. Continue?", "نعم": "Yes", "بكل تأكيد": "Absolutely", "م حسن إبراهيم": "Eng. Hassan Ibrahim", "ابدأ": "Start", "إيميل": "Email", "واتساب": "WhatsApp", "إنستجرام": "Instagram", "لينكدإن": "LinkedIn", "جيت هب": "GitHub", "وسائل التواصل هتتضاف قريب.": "Contact links coming soon.", "الصفحة دي مش موجودة. الأصل هنا في كمبيوتر م حسن.": "This page doesn't exist. The original is right here on Hassan's Computer.", "جاري تحميل الإبداع": "Loading creativity...", "المحاولة ٢٧٣ من ∞ ... لسه مفيش.": "Attempt 273 of ∞. Still nothing.", "تنبيه": "Notice", "الموقع ده اتصنّف: نسخة تجريبية.": "This site has been classified as a trial version.", "تم التحويل": "Redirected", "اتحوّلت لموقع م حسن تلقائيًا. اتفضل.": "Redirected to Hassan's site automatically. Please, come in.", "أناشيد بدون موسيقى": "Vocals-only Nasheeds", "أناشيد بأصوات بس، من غير موسيقى.": "Vocals-only nasheeds, no music.", "القائمة هتتضاف قريب.": "Playlist coming soon."};
+var EN={"الدفتر مقفول مؤقتًا.": "The guestbook is temporarily closed.", "استنى ثواني وجرّب تاني.": "Wait a few seconds and try again.", "الرسالة مش مقبولة.": "Message not accepted.", "مفيش لينكات في الرسايل.": "No links in messages.", "الرسالة فيها كلام ممنوع.": "The message contains blocked words.", "استنى شوية قبل رسالة تانية.": "Wait a bit before another message.", "وصلت للحد الأقصى: 3 رسايل في الساعة.": "Limit reached: 3 messages per hour.", "الرسالة دي اتبعتت قبل كده.": "This message was already sent.","وصلت رسالتك. هتظهر بعد موافقة م حسن.":"Message received. It will appear after Eng. Hassan approves it.","الرسائل بتظهر بعد موافقة م حسن.":"Messages appear after Eng. Hassan approves them.","مشاريعي":"My Projects","حسن حاسس بـ:":"Hassan is feeling:","آخر حاجة اشتغلت عليها:":"Last worked on:","كل المشاريع دي من وحي الخيال.":"All these projects are fictional.","قهوة":"coffee","عبقري":"a genius","بشتغل على مشروع":"working on a project","محتاج قهوة":"needs coffee","عبود AI - Messenger":"Boody AI - Messenger","عبود AI":"Boody AI","عبود AI ✨":"Boody AI ✨","متصل":"Online","اكتب سؤالك لعبود...":"Ask Boody anything...","إرسال":"Send","تعذّر تشغيل المقطع هنا.":"Couldn't play the clip here.","افتح على يوتيوب":"Open on YouTube","افتح الموقع من رابط GitHub Pages مش من الملف.":"Open the site from its GitHub Pages link, not from the file.","تشغيل":"Play","السابق":"Previous","التالي":"Next","الموضع":"Position","مستوى الصوت":"Volume","تعذّر تحميل المشغّل.":"Couldn't load the player.","كمبيوتر م حسن": "Eng. Hassan's Computer", "جاري تحميل العظمة...": "Loading greatness...", "اعتراف رسمي": "Official Confession", "الوظيفة": "Job Title", "مشروع القهوة": "Coffee Project", "المتصفح": "Browser", "دفتر الزوار": "Guestbook", "تواصل معي": "Contact Me", "أناشيد": "Nasheeds", "بسم الله": "In the name of God", "أنا السيد الموقر والعالم الجليل وسيد الناس وعم الدنيا وأبو الصحاب م حسن أقر وأعترف إني واخد فكرة الموقع ده من م عبود علشان أعرفه إنه وضيع لا يجرؤ على التطاول على أسياده من العباقرة اللي بيحطوا رجل على رجل ويعملوا نفس الشغل اللي أنت بتتني ضهرك وتسهر أيام علشان تعمله": "I, the Honorable, the Venerable, Master of the People, Uncle of the World and Father of All Friends, Eng. Hassan, hereby confess that I took the idea for this website from Eng. Boody, to let him know he is a lowly man who dares not challenge his masters: the geniuses who sit back, one leg over the other, and build the very same thing he hunches over and stays up for days to make.", "الوظيفة: سبع صنايع": "Job Title: Jack of All Trades", "طالب لغة عربية وآداب": "Arabic Literature student", "موظف سابق في أمازون": "Former Amazon employee", "موظف سابق في بريدفاست": "Former Breadfast employee", "صاحب مشروع قهوة تحت التجهيز": "Coffee entrepreneur (under construction)", "قارئ نهم وصاحب كلمة": "Avid reader and wordsmith", "مصمم ومبرمج الموقع اللي قدامك": "Designer and developer of the site in front of you", "مفتش عام على م عبود": "Inspector General of Boody", "القهوة شغفي، وبدأت أبني حاجة فيها. الكوباية عندي لازم تبقى حكاية مش مجرد مشروب.": "Coffee is my passion, and I've started building something in it. To me, a cup should be a story, not just a drink.", "جاري التجهيز...": "Setting up...", "افتح صفحة المشروع": "Open the project page", "مشروع القهوة - Setup": "Coffee Project - Setup", "اذهب": "Go", "اعتراف رسمي.txt": "Confession.txt", "المتصفح - م حسن Explorer": "Hassan Explorer", "وقّع": "Sign", "مسح الكل": "Clear all", "الرسائل بتتحفظ على جهازك إنت بس.": "Messages are saved on your device only.", "الرسائل بتظهر للكل.": "Messages are visible to everyone.", "لسه مفيش رسائل. كن أول المعجبين.": "No messages yet. Be the first fan.", "زائر كريم": "Dear visitor", "تعذّر تحميل الرسائل": "Couldn't load messages", "فشل المسح": "Delete failed", "فشل الإرسال": "Sending failed", "اسمك": "Your name", "اكتب رسالتك للعبقري": "Write a message to the genius", "مسح الرسالة": "Delete message", "العنوان": "Address", "جاري التجهيز": "Setting up", "تنبيه من النظام": "System Alert", "تم رصد مستوى إبداع مرتفع جدًا في هذا الموقع. هل تريد المتابعة؟": "Warning: extremely high creativity detected on this site. Continue?", "نعم": "Yes", "بكل تأكيد": "Absolutely", "م حسن إبراهيم": "Eng. Hassan Ibrahim", "ابدأ": "Start", "إيميل": "Email", "واتساب": "WhatsApp", "إنستجرام": "Instagram", "لينكدإن": "LinkedIn", "جيت هب": "GitHub", "وسائل التواصل هتتضاف قريب.": "Contact links coming soon.", "الصفحة دي مش موجودة. الأصل هنا في كمبيوتر م حسن.": "This page doesn't exist. The original is right here on Hassan's Computer.", "جاري تحميل الإبداع": "Loading creativity...", "المحاولة ٢٧٣ من ∞ ... لسه مفيش.": "Attempt 273 of ∞. Still nothing.", "تنبيه": "Notice", "الموقع ده اتصنّف: نسخة تجريبية.": "This site has been classified as a trial version.", "تم التحويل": "Redirected", "اتحوّلت لموقع م حسن تلقائيًا. اتفضل.": "Redirected to Hassan's site automatically. Please, come in.", "أناشيد بدون موسيقى": "Vocals-only Nasheeds", "أناشيد بأصوات بس، من غير موسيقى.": "Vocals-only nasheeds, no music.", "القائمة هتتضاف قريب.": "Playlist coming soon."};
 function tr(k){var t=k.trim();if(!t)return k;if(EN[t])return k.replace(t,EN[t]);var m=t.match(/^([^\s\u0600-\u06FFA-Za-z0-9]+)\s+(.+)$/);if(m&&EN[m[2]])return k.replace(t,m[1]+" "+EN[m[2]]);return k}
 function T(k){return lang==="en"?tr(k):k}
 function applyLang(){
@@ -313,6 +314,8 @@ var M=[["🚫","ERR_ORIGINALITY_NOT_FOUND","الصفحة دي مش موجودة.
 function showErr(){var m=M[mi%M.length];mi++;pg.innerHTML="<b></b><h3></h3><p></p>";pg.firstChild.textContent=m[0];pg.children[1].textContent=m[1];pg.children[2].textContent=m[2];applyLang()}
 showErr();mi=1;document.getElementById("go").onclick=showErr;
 
+var GB_OPEN=true; // خليها false لو عايز تقفل دفتر الزوار خالص
+var MEM=[],lastMsg="",T0=Date.now();
 var SB={url:"https://xorjxiaeqpriysrhzyal.supabase.co",key:"sb_publishable_ZTS3DdH23ijTpBRs-ER1wg_0WxCsuKb"}; // حط هنا رابط مشروع Supabase والـ anon key
 var TOK=null,G=[],gl=document.getElementById("gl"),remote=!!(SB.url&&SB.key),last=0;
 function $(i){return document.getElementById(i)}
@@ -336,19 +339,38 @@ function del(g){
 $("gc").onclick=function(){
  if(remote){api("/rest/v1/guestbook?id=gt.0",{method:"DELETE"}).then(load).catch(function(){note("فشل المسح")})}
  else{G=[];saveG();drawG()}};
+var SUB=["porn","fuck","bitch","شرموط","متناك","بورن","سكس","خول","عرص","كسمك","كسم"],WORD=["كس","زب","نيك","sex","xxx"],LINK=/(https?:|www\.|\.(com|net|org|ru|xyz|io|me|co)\b|t\.me|bit\.ly|wa\.me|@\w+\.\w+)/i;
+function nz(t){return t.toLowerCase().replace(/[\u064B-\u065F\u0640]/g,"").replace(/(.)\1{2,}/g,"$1$1")}
+function bad(t){t=nz(t);for(var i=0;i<SUB.length;i++)if(t.indexOf(SUB[i])>-1)return true;return t.split(/[^\p{L}\p{N}]+/u).some(function(x){return WORD.indexOf(x)>-1})}
+function hist(){try{return JSON.parse(localStorage.getItem("gbt")||"[]")}catch(e){return MEM}}
+function chk(a,m){
+ if(!GB_OPEN)return"الدفتر مقفول مؤقتًا.";
+ if(Date.now()-T0<4000)return"استنى ثواني وجرّب تاني.";
+ if(m.length<2||/(.)\1{7,}/.test(m))return"الرسالة مش مقبولة.";
+ if(LINK.test(m)||LINK.test(a))return"مفيش لينكات في الرسايل.";
+ if(bad(m)||bad(a))return"الرسالة فيها كلام ممنوع.";
+ var n=Date.now(),h=hist().filter(function(t){return n-t<3600000});
+ if(h.length&&n-h[h.length-1]<60000)return"استنى شوية قبل رسالة تانية.";
+ if(h.length>=3)return"وصلت للحد الأقصى: 3 رسايل في الساعة.";
+ if(m===lastMsg)return"الرسالة دي اتبعتت قبل كده.";
+ return""}
+function stamp(m){var n=Date.now(),h=hist().filter(function(t){return n-t<3600000});h.push(n);MEM=h;try{localStorage.setItem("gbt",JSON.stringify(h))}catch(e){}lastMsg=m}
 $("gs").onclick=function(){
+ if($("gh").value){$("gm").value="";return}
  var a=$("gn").value.trim()||T("زائر كريم"),m=$("gm").value.trim();
- if(!m||Date.now()-last<20000)return;
- last=Date.now();
- if(remote){api("/rest/v1/guestbook",{method:"POST",headers:{Prefer:"return=minimal"},body:JSON.stringify({name:a,message:m})}).then(function(r){if(!r.ok)throw 0;$("gm").value="";load()}).catch(function(){note("فشل الإرسال")})}
+ if(!m)return;
+ var err=chk(a,m);if(err){note(err);return}
+ stamp(m);
+ if(remote){api("/rest/v1/guestbook",{method:"POST",headers:{Prefer:"return=minimal"},body:JSON.stringify({name:a,message:m})}).then(function(r){if(!r.ok)throw 0;$("gm").value="";load();note("وصلت رسالتك. هتظهر بعد موافقة م حسن.")}).catch(function(){note("فشل الإرسال")})}
  else{G.unshift([a,m]);G=G.slice(0,30);saveG();$("gm").value="";drawG()}};
 if(remote){
- note("الرسائل بتظهر للكل.");
+ note("الرسائل بتظهر بعد موافقة م حسن.");
  $("gk").onclick=function(){var a=$("adm");a.style.display=a.style.display==="none"?"grid":"none"};
  $("gi").onclick=function(){
   api("/auth/v1/token?grant_type=password",{method:"POST",body:JSON.stringify({email:$("ge").value.trim(),password:$("gp").value})}).then(function(r){return r.json()}).then(function(j){if(!j.access_token)throw 0;TOK=j.access_token;$("gp").value="";$("adm").style.display="none";note("دخلت كأدمن.");load()}).catch(function(){note("بيانات الدخول غلط.")})}}
 load();
 
+if(!GB_OPEN){["gn","gm","gs"].forEach(function(i){$(i).style.display="none"});note("الدفتر مقفول مؤقتًا.")}
 var L=[["email","✉️ إيميل","mailto:"],["whatsapp","💬 واتساب","https://wa.me/"],["instagram","📷 إنستجرام","https://instagram.com/"],["linkedin","💼 لينكدإن","https://linkedin.com/in/"],["github","🐙 جيت هب","https://github.com/"]];
 var box=document.getElementById("links"),any=false;
 L.forEach(function(x){if(ME[x[0]]){any=true;var a=document.createElement("a");a.className="lnk";a.href=x[2]+ME[x[0]];a.target="_blank";a.rel="noopener";a.textContent=x[1];box.appendChild(a)}});
